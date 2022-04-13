@@ -1,0 +1,5 @@
+Mes fonctionnaliter de bases(commentaire algo) sont celle du à mon incrompréhension du sujet
+j'avais fait en dur sans la l'intégration des valeurs ds la console, 
+du coup la j'essaye d'intégrér mes fonctionaliter, on les modifiants pr 
+avoir les memes résultas mais avec la fonctionnalitr de la console. Du coup à ne pas supprimer
+c'est en cours de modification.
