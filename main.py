@@ -3,8 +3,9 @@ from abc import ABC, abstractmethod
 class bcolors:
     """ Pour me permetre de mettre mes commentaire en couleur"""
     GREEN = '\033[92m' #GREEN
-    BLUE = '\033[94m' #BLUE
-    RED = '\033[91m' #RED
+    BLUE  = '\033[94m' #BLUE
+    RED   = '\033[91m' #RED
+    AQUA  = '\033[96m' #TURQUOISE
     RESET = '\033[0m' #RESET COLOR
 
 
@@ -43,7 +44,7 @@ class Compte(ABC):
             print("Tu n'as pas assez d'argent ")
         else:
             self.solde = self.solde - somme
-            print(bcolors.RED,f"monsolde : {self.solde}", bcolors.RESET)
+            print(bcolors.AQUA,f"monsolde : {self.solde}", bcolors.RESET)
         return self.solde
 
     """_______________________________________________________________________"""
@@ -79,11 +80,11 @@ class CompteCourant(Compte):
 
     def __init__(self, pourcentage_agios):
         super().__init__(1465, "Alex", 150)
-        print("Mon compte Courant !")
+       # print("Mon compte Courant !")
 
         "self.decouvert = autorisation_Decouvert"
         self.agios = pourcentage_agios
-        print("avant ma fonction Agios ")
+        #print("avant ma fonction Agios ")
 
     def Agios(self):
         print("avant mon solde -> agios")
@@ -109,7 +110,7 @@ class CompteEpargne(Compte):
     """
 
     def __init__(self, pourcentage_interets):
-        super().__init__(2500, "Alex", 200)
+        super().__init__(2500, "Alex", 300)
         print("Mon compte Epargne !")
 
         self.interets = pourcentage_interets
@@ -137,31 +138,36 @@ class CompteEpargne(Compte):
 
 if __name__ == "__main__":
     """_______________________________________________________________________"""
-
-    compte = CompteCourant(10)
-    print("quelle valeur veux tu ajouter sur le compte :")
-    valeur = input()
-    compte.Versement(int(valeur))
-    print("quelle valeur veux tu enlever sur le compte :")
-    valeurs = input()
-    compte.Retrait(int(valeurs))
+    try:
+        compte = CompteCourant(0)
+        print(bcolors.GREEN,"quelle valeur veux tu ajouter sur le compte :",bcolors.RESET)
+        valeur = input()
+        compte.Versement(int(valeur))
+    except:
+        print(bcolors.RED,'tu as rentré des lettres, veulliez saisir que des chiffres svp',bcolors.RESET)
+    try:
+        print(bcolors.BLUE,"quelle valeur veux tu enlever sur le compte :",bcolors.RESET)
+        valeurs = input()
+        compte.Retrait(int(valeurs))
+    except:
+        print(bcolors.RED, 'tu as rentré des lettres, veulliez saisir que des chiffres svp', bcolors.RESET)
     #compte.Versement(450)
     #compte.Retrait(250)
     #compte.Versement(750)
-    print(bcolors.GREEN,"--------------------------------------------------------", bcolors.RESET)
+    #print(bcolors.GREEN,"--------------------------------------------------------", bcolors.RESET)
     #cptC = CompteCourant(90)
-    print(bcolors.GREEN,"je suis ici fonction agios ---\n", bcolors.RESET)
+    #print(bcolors.GREEN,"je suis ici fonction agios ---\n", bcolors.RESET)
 
    # cptC.Agios()
 
 
-    print(bcolors.BLUE,"--------------------------------------------------------", bcolors.RESET)
+    #print(bcolors.BLUE,"--------------------------------------------------------", bcolors.RESET)
     #cptE = CompteEpargne(6)
-    print(bcolors.BLUE, "je suis ici fonction interet ---\n", bcolors.RESET)
+    #print(bcolors.BLUE, "je suis ici fonction interet ---\n", bcolors.RESET)
     #print(cptC.Versement(150))
     #print(cptC.Retrait(2))
     #cptE.Interet()
-    print(bcolors.BLUE,"-----------------------------------------------------------\n", bcolors.RESET)
+    #print(bcolors.BLUE,"-----------------------------------------------------------\n", bcolors.RESET)
 
     # _______________________________________________________________________
     """compte = CompteCourant(5,1)
