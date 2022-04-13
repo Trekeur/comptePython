@@ -7,6 +7,7 @@ class bcolors:
     RED   = '\033[91m' #RED
     AQUA  = '\033[96m' #TURQUOISE
     RESET = '\033[0m' #RESET COLOR
+    VIO   = '\033[95m'#un style de violeet
 
 
 class Compte(ABC):
@@ -81,7 +82,7 @@ class CompteCourant(Compte):
         print("Mon solde est de :", solde_agios)
 
         solde = solde - solde_agios
-        #print( "resulta de mon agios :", solde )
+        print( "resulta de mon agios :", solde )
         #print(bcolors.GREEN,"----------------------------------------- \n", bcolors.RESET)
         print(bcolors.AQUA, f"monsolde : {solde}", bcolors.RESET)
 
@@ -121,8 +122,7 @@ class CompteEpargne(Compte):
         return self.solde
 
 if __name__ == "__main__":
-    """_______________________________________________________________________"""
-
+    """___________________________COMPTE EPARGNE____________________________________________"""
     try:
         compte_epargne = CompteEpargne(5)
         print('Mon numéro de compte est :', compte_epargne.compte)
@@ -141,6 +141,13 @@ if __name__ == "__main__":
     except:
         print(bcolors.RED, 'tu as rentré des lettres, veulliez saisir que des chiffres svp', bcolors.RESET)
 
+    """___________________________COMPTE COURANT____________________________________________"""
+    # En cours de finission
+    compte_courant = CompteCourant(90)
+    print(bcolors.VIO," Je suis dans mon compte courant ! ",bcolors.RESET)
+    """
+    compte_courant.agios()
+    """
 
     #_______________________________________________________________________
     """
@@ -164,10 +171,12 @@ if __name__ == "__main__":
 
     # _______________________________________________________________________
     """
-    """compte = CompteCourant(5,1)
-        compte = CompteEpargne(1)"""
-       # print("-----------------------------------")
+
+    """
+    compte = CompteCourant(5,1)
+    compte = CompteEpargne(1)
+    # print("-----------------------------------")
         #print("numero de compte N°", compte.compte)
         #print("proprietaire :", compte.proprietaire)
        # print("mon solde est de : ", compte.solde)
-
+    """
